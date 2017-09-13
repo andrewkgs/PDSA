@@ -33,5 +33,8 @@ Output example:
 1
 ```
 ## File to be submitted to the judge system:
-
 You are requested to design a Java class named Mapping. So, please submitted a file named: Mapping.java
+
+## Related links
+> https://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html
+> https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
