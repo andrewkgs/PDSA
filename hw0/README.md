@@ -34,6 +34,7 @@ Output example:
 ```
 ## File to be submitted to the judge system:
 You are requested to design a Java class named Mapping. So, please submitted a file named: Mapping.java
+**Example file**: [hw0.zip](https://github.com/andrewkgs/PDSA/blob/master/hw0/hw0.zip)
 
 ## Related links
 > https://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html
