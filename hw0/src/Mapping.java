@@ -30,7 +30,7 @@ public class Mapping {
                 for (int j = 0; j < readCount; j++) {
                     readLength = readsArray[j].length();
                     for (int k = 0; k < reference.length()-readLength+1; k++) {
-                        if (readsArray[j].compareTo(reference.substring(k, k+readLength)) == 0) {
+                        if (readsArray[j].equals(reference.substring(k, k+readLength))) {
                             count[j]++;
                         }
                     }
