@@ -24,7 +24,7 @@ public class Mapping {
                 }
                 reference = br.readLine();
 
-                int readLength = 0;
+                int readLength;
                 int[] count = new int[readCount];
 
                 for (int j = 0; j < readCount; j++) {
