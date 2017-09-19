@@ -1,6 +1,6 @@
 # HW1: Programming Assignment 1: Percolation
 
-http://www.cs.princeton.edu/courses/archive/fall14/cos226/assignments/percolates.png
+![](http://www.cs.princeton.edu/courses/archive/fall14/cos226/assignments/percolates.png)
 
 ## The model:
 We model a percolation system using an N-by-N grid of sites. Each site is either open or blocked. A full site is an open site that can be connected to an open site in the top row via a chain of neighboring (left, right, up, down) open sites. We say the system percolates if there is a full site in the bottom row. In other words, a system percolates if we fill all open sites connected to the top row and that process fills some open site on the bottom row. (For the insulating/metallic materials example, the open sites correspond to metallic materials, so that a system that percolates has a metallic path from top to bottom, with full sites conducting. For the porous substance example, the open sites correspond to empty space through which water might flow, so that a system that percolates lets water fill open sites, flowing from top to bottom.)
@@ -27,8 +27,7 @@ In other words, if you need more than one site to be opened before percolation, 
 ## File to be submitted to the judge system:
 
 You are requested to design a Java class named Percolation. So, please submitted a file named: Percolation.java
-
-**Example file**: [hw1.zip]()
+**Example file**: [hw1.zip](https://github.com/andrewkgs/PDSA/blob/master/hw1/hw1.zip)
 
 ## Related links
 
