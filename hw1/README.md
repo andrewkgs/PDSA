@@ -27,7 +27,7 @@ In other words, if you need more than one site to be opened before percolation, 
 
 ## File to be submitted to the judge system:
 
-You are requested to design a Java class named Percolation. So, please submitted a file named: Percolation.java
+You are requested to design a Java class named Percolation. So, please submitted a file named: Percolation.java <br/>
 **Example file**: [hw1.zip](https://github.com/andrewkgs/PDSA/blob/master/hw1/hw1.zip)
 
 ## Related links
