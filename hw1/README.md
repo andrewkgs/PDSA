@@ -1,5 +1,6 @@
-# HW1: Programming Assignment 1: Percolation
+# HW1: Percolation
 
+## Examples of percolated and not percolated:
 ![](http://www.cs.princeton.edu/courses/archive/fall14/cos226/assignments/percolates.png)
 
 ## The model:
