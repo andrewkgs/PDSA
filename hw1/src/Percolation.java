@@ -71,14 +71,11 @@ public class Percolation{
                 // initialization of a Percolation data structure
                 Percolation percolation = new Percolation(N);
 
-                int index;
                 for (int i=0; i<row.size(); i++){
-                    index = percolation.convert(N, row.get(i), col.get(i));
-                    percolation.open_grid(index);
+                    percolation.open_grid(percolation.convert(N, row.get(i), col.get(i)));
                 }
                 for (int i=0; i<row.size(); i++){
-                    index = percolation.convert(N, row.get(i), col.get(i));
-                    percolation.connect(N, row.get(i), col.get(i), index);
+                    percolation.connect(N, row.get(i), col.get(i), percolation.convert(N, row.get(i), col.get(i)));
                 }
 
                 if (percolation.is_percolated()){ System.out.printf("0"); }
@@ -98,7 +95,7 @@ public class Percolation{
                             }
                         }
                     }
-                    if (open_row != 0 && open_col != 0){ System.out.printf("%d,%d", open_row, open_col); }
+                    if (open_row != 0 && open_col != 0){ System.out.printf("%d,%d\n", open_row, open_col); }
                     else { System.out.printf("-1"); }
                 }
             }
