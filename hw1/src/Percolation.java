@@ -1,56 +1,106 @@
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.util.ArrayList;
 
 public class Percolation{
 
     private int top = 0;
     private int bottom;
+    private boolean[] grid_state; // The default is false.
     private WeightedQuickUnionUF wqf;
 
     public Percolation(int n){
         bottom = n*n + 1;
+        grid_state = new boolean[n*n + 2];
         wqf = new WeightedQuickUnionUF(n*n + 2);
     }
 
-    public boolean is_percolated(){
+    private int convert(int n, int x, int y){
+        return n*(x-1)+y;
+    }
+
+    private void open_grid(int i){
+        grid_state[i] = true;
+    }
+
+    private boolean is_open(int i){ return grid_state[i]; }
+
+    private void connect(int n, int x, int y, int i){
+        if(x == 1){ wqf.union(top, i); }
+        else if(x == n){ wqf.union(bottom, i); }
+        if(is_open(convert(n, x, y-1)) && y != 1){ wqf.union(i, i-1); }
+        if(is_open(convert(n, x, y+1)) && y != n){ wqf.union(i, i+1); }
+        if(x != n && is_open(convert(n, x+1, y))){ wqf.union(i, i+n); }
+    }
+    private boolean is_percolated(){
         return wqf.connected(top, bottom);
     }
 
+    private ArrayList<Integer> connected_top(int n){
+        ArrayList<Integer> connect_top = new ArrayList<>();
+        for (int i=1; i<(n*n+1); i++){
+            if (wqf.find(i) == wqf.find(0)){ connect_top.add(i); }
+        }
+        return connect_top;
+    }
+
+    private ArrayList<Integer> connected_bottom(int n){
+        ArrayList<Integer> connect_bottom = new ArrayList<>();
+        for (int i=n*n; i > 0; i--){
+            if (wqf.find(i) == wqf.find(n*n+1)){ connect_bottom.add(i); }
+        }
+        return connect_bottom;
+    }
+
     public static void main(String[] args) throws Exception {
-
-        // read file from args[0] in Java 7 style
         if(args.length != 0) {
+            // read file from args[0] in Java 7 style
             try (BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
-
-                // read a line
+                // store data from file
                 String data = br.readLine();
-
-                // store the first integer in variable N (size)
                 int N = Integer.parseInt(data);
+
+                ArrayList<Integer> row = new ArrayList<Integer>();
+                ArrayList<Integer> col = new ArrayList<Integer>();
                 while((data = br.readLine()) != null){
-                    System.out.println(data);
+                    row.add(Integer.parseInt(data.split(",")[0]));
+                    col.add(Integer.parseInt(data.split(",")[1]));
                 }
-                //boolean[][] coordinates = new boolean[][]; // All elements are default to false.
+                br.close();
 
                 // initialization of a Percolation data structure
                 Percolation percolation = new Percolation(N);
-            
-                /*  now you can write your own solution to hw1
-                 *  you can follow the instruction described below:
-                 *
-                 *  1. read the rest content of the file
-                 *  2. open the sites one by one
-                 *  3. after opening a site, check whether it is already percolation; if yes, output 0
-                 *  4. if the system does not percolates after opening all the listed sites, determine whether the system will percolate after opening one more site; if yes, output the cooridates of the site; if not, output -1
-                 *
-                 *
-                 *  [note]
-                 *  you can use every data structure in standard Java packages (Java 8 supported)
-                 *  the packages in stdlib.jar and algs4.jar are also available for you to use
-                 *
-                 *  [hint]
-                 *  you can refer UF.java or WeightedQuickUnionUF.java here  http://algs4.cs.princeton.edu/code/
-                 */
+
+                int index;
+                for (int i=0; i<row.size(); i++){
+                    index = percolation.convert(N, row.get(i), col.get(i));
+                    percolation.open_grid(index);
+                }
+                for (int i=0; i<row.size(); i++){
+                    index = percolation.convert(N, row.get(i), col.get(i));
+                    percolation.connect(N, row.get(i), col.get(i), index);
+                }
+
+                if (percolation.is_percolated()){ System.out.printf("0"); }
+                else{
+                    int open_row=0, open_col=0;
+                    outerloop:
+                    for (int i=percolation.connected_top(N).size()-1; i>=0;  i--) {
+                        for (int j = 0; j < percolation.connected_bottom(N).size(); j++) {
+                            int a = percolation.connected_top(N).get(i);
+                            int b = percolation.connected_bottom(N).get(j);
+                            int diff = a - b;
+                            int avg = (a + b) / 2;
+                            if (diff == 2*N || diff == (-2)*N || ((diff == 2 || diff == -2) && (a-1)/N == (b-1)/N)){
+                                open_row = ((avg-1) / N) + 1;
+                                open_col = avg - ((open_row-1) * N);
+                                break outerloop;
+                            }
+                        }
+                    }
+                    if (open_row != 0 && open_col != 0){ System.out.printf("%d,%d", open_row, open_col); }
+                    else { System.out.printf("-1"); }
+                }
             }
         }
     }
