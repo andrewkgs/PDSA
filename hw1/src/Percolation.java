@@ -153,12 +153,8 @@ public class Percolation{
                         }
                     }
 
-                    if (open_row != 0 && open_col != 0) {
-                        System.out.printf("%d,%d", open_row, open_col);
-                    }
-                    else {
-                        StdOut.print("-1");
-                    }
+                    if (open_row != 0 && open_col != 0) { System.out.printf("%d,%d", open_row, open_col); }
+                    else { StdOut.print("-1"); }
                 }
             }
         }
