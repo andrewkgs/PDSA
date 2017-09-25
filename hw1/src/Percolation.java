@@ -32,7 +32,6 @@ public class Percolation{
         if (is_open(i+1) && in_to_col(n, in_to_row(n, i), i) != n){ wqf.union(i, i+1); } // right
         if (in_to_row(n, i) != n && is_open(i+n)){ wqf.union(i, i+n); } // down
         if (in_to_row(n, i) != 1 && is_open(i-n)){ wqf.union(i, i-n); } // up
-
     }
 
     private boolean is_percolated(){ return wqf.connected(top, bottom); }
