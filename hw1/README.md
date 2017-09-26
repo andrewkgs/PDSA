@@ -32,5 +32,5 @@ You are requested to design a Java class named Percolation. So, please submitted
 
 ## Related links
 
-> http://algs4.cs.princeton.edu/code/edu/princetiion/cs/algs4/UF.java.html
+> http://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/UF.java.html
 > http://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/WeightedQuickUnionUF.java.html
