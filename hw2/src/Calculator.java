@@ -2,82 +2,76 @@ import java.util.Stack;
 
 public class Calculator {
 
-    private Double calculate(String s, double a, double b){
-
-        switch (s){
-            case "+": return b + a;
-            case "-": return b - a;
-            case "*": return b * a;
-            case "/": return b / a;
-            default: StdOut.println(s); return -1000.0; // This should not happen.
-        }
-    }
-
     public Double ans (String e) {
 
         Stack<Double> va = new Stack<>();
         Stack<String> op = new Stack<>();
-        boolean priority = false; // if the previous operator is "*" or "/", then priority == true.
+        boolean first_check = true;
 
         String[] content = e.split(" ");
         for (String s: content){
-            if (!priority) {
-                switch (s){
-                    case "+":
-                    case "-":
-                    case "(":
-                        op.push(s);
-                        break;
-                    case "*":
-                    case "/":
-                        op.push(s);
-                        priority = true;
-                        break;
-                    case ")":
-                        if (!op.peek().equals("(")){
-                            va.push(calculate(op.pop(), va.pop(), va.pop()));
-                        }
-                        break;
-                    default:{
-                        va.push(Double.parseDouble(s));
-                        break;
-                    }
+            if (va.empty() && op.empty() && !s.equals("(")){
+                if (!s.equals("(")){
+                    op.push("+");
+                }
+                else {
+                    op.push(s); // s is "("
+                    op.push("+");
+                    first_check = false;
                 }
             }
-
-            else{
-                priority = false;
-                switch (s){
-                    case "(":{
-                        op.push(s);
-                        break;
+            if (s.equals("+") || s.equals("-")){
+                op.push(s);
+            }
+            else if (s.equals("*") || s.equals("/")){
+                op.push(s);
+            }
+            else if (s.equals("(") && !first_check){
+                op.push(s);
+                op.push("+");
+            }
+            else if (s.equals(")")){
+                while (!op.peek().equals("(")) {
+                    double b = va.pop();
+                    if (op.pop().equals("-")){
+                        b *= -1;
                     }
-                    // default in here will only be values.
-                    default:{
-                        va.push(calculate(op.pop(), Double.parseDouble(s), va.pop()));
-                        break;
+                    double a = va.pop();
+                    if (op.pop().equals("-")){
+                        a *= -1;
                     }
+                    va.push(a+b);
+                }
+                op.pop(); // pop out "("
+                if (op.peek().equals("*")){
+                    op.pop();
+                    double b = va.pop();
+                    double a = va.pop();
+                    va.push(a * b);
+                }
+                else if (op.peek().equals("/")){
+                    op.pop();
+                    double b = va.pop();
+                    double a = va.pop();
+                    va.push(a / b);
+                }
+            }
+            // s is a value
+            else {
+                va.push(Double.parseDouble(s));
+                if (op.peek().equals("*")){
+                    va.push(va.pop() * va.pop());
+                }
+                else if (op.peek().equals("/")){
+                    va.push(1 / va.pop() * va.pop());
                 }
             }
         }
 
-        String front_sign, back_sign;
-        Double front_value, back_value;
-        while(va.size() > 1){
-            //if (op.peek().equals("(")){ op.pop(); }
 
-            back_sign = op.pop();
-            back_value = va.pop();
-            if (va.size() == 1){ front_sign = "+"; }
-            else{ front_sign = op.pop(); }
-            front_value = va.pop();
+        while (!va.empty()){ StdOut.println(va.pop()); }
+        while (!op.empty()){ StdOut.println(op.pop()); }
 
-            if (back_sign.equals("-")){ back_value *= -1; }
-            if (front_sign.equals("-")){ front_value *= -1; }
-            va.push(back_value + front_value);
-            op.push("+");
-        }
-
-        return va.pop();
+        return 10.0;
     }
 }
