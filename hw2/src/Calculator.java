@@ -30,7 +30,6 @@ public class Calculator {
                         op.push(s);
                         priority = true;
                     }
-
                     case ")": {
                         while (!op.pop().equals("(")){
                             va.push(calculate(op.pop(), va.pop(), va.pop()));
@@ -45,9 +44,7 @@ public class Calculator {
             else{
                 priority = false;
                 switch (s){
-                    case "(":{
-                        op.push(s);
-                    }
+                    case "(":{ op.push(s); }
                     // default in here will only be values.
                     default:{
                         va.push(calculate(op.pop(), Double.parseDouble(s), va.pop()));
