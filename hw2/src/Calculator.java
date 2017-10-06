@@ -6,19 +6,11 @@ public class Calculator {
 
         Stack<Double> va = new Stack<>();
         Stack<String> op = new Stack<>();
-        boolean first_check = true;
 
         String[] content = e.split(" ");
         for (String s: content){
-            if (va.empty() && op.empty() && !s.equals("(")){
-                if (!s.equals("(")){
-                    op.push("+");
-                }
-                else {
-                    op.push(s); // s is "("
-                    op.push("+");
-                    first_check = false;
-                }
+            if (va.empty() && op.empty()){
+                op.push("+");
             }
             if (s.equals("+") || s.equals("-")){
                 op.push(s);
@@ -26,23 +18,39 @@ public class Calculator {
             else if (s.equals("*") || s.equals("/")){
                 op.push(s);
             }
-            else if (s.equals("(") && !first_check){
+            else if (s.equals("(")){
                 op.push(s);
                 op.push("+");
             }
             else if (s.equals(")")){
                 while (!op.peek().equals("(")) {
                     double b = va.pop();
-                    if (op.pop().equals("-")){
+                    String d = op.pop();
+                    if (d.equals("-")){
                         b *= -1;
                     }
-                    double a = va.pop();
-                    if (op.pop().equals("-")){
+                    double a;
+                    if (!va.empty()) {
+                        a = va.pop();
+                    }
+                    else{
+                        a = 0.0; // when va is empty.
+                    }
+                    String c = op.pop();
+                    if (c.equals("(")){ // "(" has been pop out.
+                        va.push(a);
+                        va.push(b);
+                        if (op.size() == 1){
+                            op.push("+");
+                        }
+                        break;
+                    }
+                    else if (c.equals("-")){
                         a *= -1;
                     }
                     va.push(a+b);
+                    op.push("+");
                 }
-                op.pop(); // pop out "("
                 if (op.peek().equals("*")){
                     op.pop();
                     double b = va.pop();
@@ -56,13 +64,15 @@ public class Calculator {
                     va.push(a / b);
                 }
             }
-            // s is a value
+            // else: s is a value
             else {
                 va.push(Double.parseDouble(s));
                 if (op.peek().equals("*")){
+                    op.pop();
                     va.push(va.pop() * va.pop());
                 }
                 else if (op.peek().equals("/")){
+                    op.pop();
                     va.push(1 / va.pop() * va.pop());
                 }
             }
