@@ -5,7 +5,7 @@ This class must contain a public function with the following API:
 ```
 public Double ans (String e) {
 // please replace the following null to the answer you calculate.
-return null
+return null;
 }
 ```
 Input to the function 'ans':
