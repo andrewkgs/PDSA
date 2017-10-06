@@ -9,15 +9,11 @@ public class Calculator {
 
         String[] content = e.split(" ");
         for (String s: content){
-            if (va.empty() && op.empty()){
-                op.push("+");
-            }
-            if (s.equals("+") || s.equals("-")){
-                op.push(s);
-            }
-            else if (s.equals("*") || s.equals("/")){
-                op.push(s);
-            }
+
+            if (va.empty() && op.empty()){ op.push("+"); }
+
+            if (s.equals("+") || s.equals("-")){ op.push(s); }
+            else if (s.equals("*") || s.equals("/")){ op.push(s); }
             else if (s.equals("(")){
                 op.push(s);
                 op.push("+");
@@ -26,28 +22,18 @@ public class Calculator {
                 while (!op.peek().equals("(")) {
                     double b = va.pop();
                     String d = op.pop();
-                    if (d.equals("-")){
-                        b *= -1;
-                    }
+                    if (d.equals("-")){ b *= -1; }
                     double a;
-                    if (!va.empty()) {
-                        a = va.pop();
-                    }
-                    else{
-                        a = 0.0; // when va is empty.
-                    }
+                    if (!va.empty()) { a = va.pop(); }
+                    else{ a = 0.0; } // when va is empty.
                     String c = op.pop();
                     if (c.equals("(")){ // "(" has been pop out.
                         va.push(a);
                         va.push(b);
-                        if (op.size() == 1){
-                            op.push("+");
-                        }
+                        if (op.size() == 1){ op.push("+"); }
                         break;
                     }
-                    else if (c.equals("-")){
-                        a *= -1;
-                    }
+                    else if (c.equals("-")){ a *= -1; }
                     va.push(a+b);
                     op.push("+");
                 }
@@ -78,10 +64,18 @@ public class Calculator {
             }
         }
 
-
-        while (!va.empty()){ StdOut.println(va.pop()); }
-        while (!op.empty()){ StdOut.println(op.pop()); }
-
-        return 10.0;
+        double a, b;
+        String c, d;
+        while (va.size() > 1){
+            b = va.pop();
+            a = va.pop();
+            d = op.pop();
+            c = op.pop();
+            if (d.equals("-")){ b *= -1; }
+            if (c.equals("-")){ a *= -1; }
+            va.push(a+b);
+            op.push("+");
+        }
+        return va.pop();
     }
 }
