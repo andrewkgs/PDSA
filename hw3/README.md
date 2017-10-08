@@ -21,11 +21,11 @@ public class Deque implements Iterable {
 }
 ```
 
-Corner cases:
-Throw a java.lang.NullPointerException if the client attempts to add a null item. <br/>
-Throw a java.util.NoSuchElementException if the client attempts to remove an item from an empty deque. <br/>
-Throw a java.lang.UnsupportedOperationException if the client calls the remove() method in the iterator. <br/>
-Throw a java.util.NoSuchElementException if the client calls the next() method in the iterator and there are no more items to return. <br/>
+> Corner cases: <br/>
+> Throw a java.lang.NullPointerException if the client attempts to add a null item. <br/>
+> Throw a java.util.NoSuchElementException if the client attempts to remove an item from an empty deque. <br/>
+> Throw a java.lang.UnsupportedOperationException if the client calls the remove() method in the iterator. <br/>
+> Throw a java.util.NoSuchElementException if the client calls the next() method in the iterator and there are no more items to return. <br/>
 
 ## Performance requirements.
 Your deque implementation must support each deque operation in constant worst-case time and use space proportional to the number of items currently in the deque. Additionally, your iterator implementation must support each operation (including construction) in constant worst-case time.
