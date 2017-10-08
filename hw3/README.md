@@ -27,5 +27,5 @@ public class Deque implements Iterable {
 * Throw a ***java.lang.UnsupportedOperationException*** if the client calls the remove() method in the iterator.
 * Throw a ***java.util.NoSuchElementException*** if the client calls the next() method in the iterator and there are no more items to return.
 
-## Performance requirements.
+## Performance requirements
 Your deque implementation must support each deque operation in constant worst-case time and use space proportional to the number of items currently in the deque. Additionally, your iterator implementation must support each operation (including construction) in constant worst-case time.
