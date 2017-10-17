@@ -2,12 +2,12 @@
 
 Write a generic data type for a deque. The goal of this assignment is to implement elementary data structures using arrays and/or linked lists, and to introduce you to generics and iterators.
 
-## Deque_2
-A double-ended queue or deque (pronounced "deck") is a generalization of a stack and a queue that supports adding and removing items from either the front or the back of the data structure. Create a generic data type Deque_2 that implements the following API:
+## Deque
+A double-ended queue or deque (pronounced "deck") is a generalization of a stack and a queue that supports adding and removing items from either the front or the back of the data structure. Create a generic data type Deque that implements the following API:
 
 ```
-public class Deque_2 implements Iterable {
-    public Deque_2() // construct an empty deque
+public class Deque implements Iterable {
+    public Deque() // construct an empty deque
     public boolean isEmpty() // is the deque empty?
     public int size() // return the number of items on the deque
     public void addFirst(Item item) // add the item to the front
