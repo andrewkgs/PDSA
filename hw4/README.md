@@ -5,7 +5,7 @@ In this homework, you will be guided to learn:
 
 # Assignment: HW4-0 (practice by yourself)
 1. Create N 2D points with StdRandom (store in a array of Point2D), and draw the points with StdDraw (radius = 0.01)
-2. Find the point with the samllest y coordinate, and draw the point with red color
+2. Find the point with the smallest y coordinate, and draw the point with red color
 3. Base on the red point, calculate the angles of the red point to other points, and sort by angles (counterclockwise)
 
 # Assignment: HW4-1
