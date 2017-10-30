@@ -22,7 +22,7 @@ http://en.wikipedia.org/wiki/List_of_poker_hands
 ### Submission
 When you are doing the homework, you put all the three class files in the same project. When submitting the homework, you will be requested to upload 'Card.java' and 'Player.java' separately. These files will be judged independently, which means that you are not allowed to modify the interface of the functions.
 
-### Files: [hw5.zip](https://github.com/andrewkgs/PDSA/blob/master/hw5/hw5.zip)
+**Files**: [hw5.zip](https://github.com/andrewkgs/PDSA/blob/master/hw5/hw5.zip)
 
 Example output: 
 ```
