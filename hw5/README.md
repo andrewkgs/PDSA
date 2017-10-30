@@ -24,7 +24,7 @@ When you are doing the homework, you put all the three class files in the same p
 
 **Files**: [hw5.zip](https://github.com/andrewkgs/PDSA/blob/master/hw5/hw5.zip)
 
-Example output: 
+### Example output: 
 ```
 Kristoff
 ```
