@@ -15,20 +15,21 @@ public class Onion {
 
         Stack<Point2D> convex_hull = new Stack<>();
 
-        int min = min_Y(a);
-        //StdOut.println(min);
-        Point2D start = a[min];
-        Arrays.sort(a, start.ATAN2_ORDER);
-        //for (int j = 0; j < a.length; j++) {
-        //    System.out.println(a[j]);
-        //}
-        convex_hull.push(a[0]);
-        convex_hull.push(a[1]);
+        Point2D[] b = new Point2D[a.length];
+        for (int i=0; i<a.length; i++) {
+            b[i] = new Point2D(a[i].x(), a[i].y());
+        }
+        int min = min_Y(b);
+        Point2D start = b[min];
+        //StdOut.println(start);
+        Arrays.sort(b, start.ATAN2_ORDER);
+        convex_hull.push(b[0]);
+        convex_hull.push(b[1]);
 
-        for (int i = 2; i < a.length; i++) {
+        for (int i = 2; i<a.length; i++) {
             Point2D q = convex_hull.pop();
             Point2D p = convex_hull.pop();
-            Point2D r = a[i];
+            Point2D r = b[i];
             while (Point2D.ccw(p, q, r) != 1) {
                 q = p;
                 p = convex_hull.pop();
@@ -66,7 +67,7 @@ public class Onion {
             int N = Integer.parseInt(br.readLine());
             Point2D[] group = new Point2D[N];
 
-            for (int i=0; i<N; i++) {
+            for (int i = 0; i < N; i++) {
                 String[] coordinate = br.readLine().split("\\s");
                 double X_co = Double.parseDouble(coordinate[0]);
                 double Y_co = Double.parseDouble(coordinate[1]);
@@ -74,10 +75,32 @@ public class Onion {
             }
 
             int N_convexhull = 0;
-            int[] root = new int[N];
+            int unused_points_num = group.length;
 
-            System.out.println(ConvexHullVertex(group)[1]);
+            while (unused_points_num > 2) {
+                boolean[] state = new boolean[group.length]; // Default is false
+                int[] used_points = ConvexHullVertex(group);
 
+                for (int i=0; i<used_points.length; i++){
+                    state[used_points[i]] = true;
+                }
+                unused_points_num -= used_points.length;
+                Point2D[] temp = new Point2D[unused_points_num];
+                int count = 0;
+                for (int i=0; i<state.length; i++) {
+                    if (!state[i]) {
+                        temp[count] = new Point2D(group[i].x(), group[i].y());
+                        count++;
+                    }
+                }
+                //for (int p=0; p<group.length; p++){
+                //    System.out.println(group[p]);
+                //}
+                //StdOut.println("===");
+                group = temp;
+                N_convexhull++;
+            }
+            System.out.println(N_convexhull);
         }
     }
 }
