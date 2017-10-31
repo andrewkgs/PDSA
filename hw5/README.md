@@ -6,7 +6,7 @@ In this homework, there are three Java classes involved. Please implement some f
 
 The Card class should finish compareTo and SuitOrder, so the Card can be sorted. <br/>
 
-*HW5-1不需要讀檔*
+* HW5-1不需要讀檔
 
 ## Assignment: HW5-2
 
