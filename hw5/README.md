@@ -10,7 +10,7 @@ The Card class should finish compareTo and SuitOrder, so the Card can be sorted.
 
 ## Assignment: HW5-2
 
-The Game Class deals two hole cards to each player (the number of players is given in the first line of the input file),and there are five community card(公用牌,in line 2~6), judges who has the best five card poker hand from any combination of the seven cards of the five community cards and their own two hole cards. <br/>
+The Game Class deals two hole cards to each player (the number of players is given in the first line of the input file),and there are five community card (公用牌, in line 2~6), judges who has the best five card poker hand from any combination of the seven cards of the five community cards and their own two hole cards. <br/>
 
 If multiple players have same priority of hands, compare the high card in it to decide who wins the game. For example, if David has one pair (Spades 10 and Diamonds 10) and Mary has one pair, too (Hearts 10 and Clubs 10), David is the winner, because Spades 10 is higher than Heart 10. (suit priority, Spades > Hearts > Diamonds > Clubs). <br/>
 
