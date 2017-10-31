@@ -6,7 +6,7 @@ In this homework, there are three Java classes involved. Please implement some f
 
 The Card class should finish compareTo and SuitOrder, so the Card can be sorted. <br/>
 
-HW5-1不需要讀檔
+*HW5-1不需要讀檔*
 
 ## Assignment: HW5-2
 
@@ -23,6 +23,24 @@ http://en.wikipedia.org/wiki/List_of_poker_hands
 When you are doing the homework, you put all the three class files in the same project. When submitting the homework, you will be requested to upload 'Card.java' and 'Player.java' separately. These files will be judged independently, which means that you are not allowed to modify the interface of the functions.
 
 **Files**: [hw5.zip](https://github.com/andrewkgs/PDSA/blob/master/hw5/hw5.zip)
+
+### Example input: 
+```
+4
+Diamonds_10
+Spades_10
+Spades_9
+Hearts_Q
+Clubs_6
+Kristoff
+Hearts_10,Hearts_9
+Elsa
+Spades_A,Hearts_K
+Anna
+Diamonds_J,Diamonds_K
+Olaf
+Clubs_A,Hearts_8
+```
 
 ### Example output: 
 ```
