@@ -1,0 +1,22 @@
+
+***龟Player.java 穦笿拜肈 ***
+
+*** 眎礟ぃ穦狡瞷 ****      
+
+1. A>K>Q>J>10>9......>3>2
+
+2. Spades > Hearts > Diamonds > Clubs
+
+3. Four of a kind : 虫ゑぶ臟や碞だ
+
+4. full house : ゑ3眎场计 (ぃ︹)ゑpair计(ぃ︹)璝pair计玥 return 0
+
+5. flush : も逼い 程虫ゑ耕 (计︹常ゑ)  璝程虫  玥ゑ材眎  摸崩......
+
+6. straight : flush   A2345疭ㄒ琌程抖  34567>A2345
+
+7. two pair : ゑpair计ゑpair计   璝常玥 return 0
+
+8. pair : ゑpair计ゑpair礟(︹) (Τㄢ眎ゑ) ㄢ眎常玥 return 0
+
+9. high card : flush
