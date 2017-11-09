@@ -1,22 +1,22 @@
 
-***實作Player.java 會遇到的問題 ***
+*** 實作 Player.java 會遇到的問題 ***
 
 *** 同一張牌不會重複出現 ****      
 
-1. A>K>Q>J>10>9......>3>2
+1. A > K > Q > J > 10 > 9 ...... > 3 > 2
 
 2. Spades > Hearts > Diamonds > Clubs
 
-3. Four of a kind : 單純比多少鐵支就可分出
+3. four of a kind : 單純比多少鐵支就可分出
 
-4. full house : 先比3張相同部份的數值 (不看花色)，在比pair的數值(不看花色)，若pair數值又相同，則 return 0
+4. full house : 先比3張相同部份的數值(不看花色)，再比pair的數值(不看花色)，若pair數值又相同，則 return 0
 
-5. flush : 各自手排中 最大單卡比較 (數值，花色都比) ， 若最大單卡相同 ， 則比第二大張 ， 以此類推......
+5. flush : 各自手排中最大單卡比較(數值，花色都比)，若最大單卡相同，則比第二大張，以此類推......
 
-6. straight : 同flush ， 但 A2345 為特例，是最小的順子 ， 因此 34567 > A2345
+6. straight : 同 flush，但 A2345 為特例，是最小的順子，因此 34567 > A2345
 
-7. two pair : 先比大pair的數值，再比小pair的數值   若都相同則 return 0
+7. two pair : 先比大 pair 的數值，再比小 pair 的數值，若都相同則 return 0
 
-8. pair : 先比pair數值，再比pair牌的(花色) (有兩張可以比) 兩張都相同則 return 0
+8. pair : 先比pair數值，再比pair牌的花色(有兩張可以比)，兩張都相同則 return 0
 
 9. high card : 同flush
