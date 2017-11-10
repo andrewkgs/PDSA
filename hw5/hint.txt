@@ -1,7 +1,6 @@
+* 實作 Player.java 會遇到的問題
 
-*** 實作 Player.java 會遇到的問題 ***
-
-*** 同一張牌不會重複出現 ****      
+* 同一張牌不會重複出現     
 
 1. A > K > Q > J > 10 > 9 ...... > 3 > 2
 
@@ -17,6 +16,6 @@
 
 7. two pair : 先比大 pair 的數值，再比小 pair 的數值，若都相同則 return 0
 
-8. pair : 先比pair數值，再比pair牌的花色(有兩張可以比)，兩張都相同則 return 0
+8. pair : 先比 pair 數值，再比 pair 牌的花色(有兩張可以比)，兩張都相同則 return 0
 
-9. high card : 同flush
+9. high card : 同 flush
