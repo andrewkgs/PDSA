@@ -306,32 +306,32 @@ public class Player implements Comparable<Player>{
                     else return 0;
 
                 case 2:
-                    if (rankTwoPair(this.cards,hand_info(this.cards))[0] > rankTwoPair(that.cards,hand_info(that.cards))[0]) return 1;
-                    else if (rankTwoPair(this.cards,hand_info(this.cards))[0] < rankTwoPair(that.cards,hand_info(that.cards))[0]) return -1;
-                    else if (rankTwoPair(this.cards,hand_info(this.cards))[1] > rankTwoPair(that.cards,hand_info(that.cards))[1]) return 1;
-                    else if (rankTwoPair(this.cards,hand_info(this.cards))[1] < rankTwoPair(that.cards,hand_info(that.cards))[1]) return -1;
+                    if (rankTwoPair(this.cards, hand_info(this.cards))[0] > rankTwoPair(that.cards, hand_info(that.cards))[0]) return 1;
+                    else if (rankTwoPair(this.cards, hand_info(this.cards))[0] < rankTwoPair(that.cards, hand_info(that.cards))[0]) return -1;
+                    else if (rankTwoPair(this.cards, hand_info(this.cards))[1] > rankTwoPair(that.cards, hand_info(that.cards))[1]) return 1;
+                    else if (rankTwoPair(this.cards, hand_info(this.cards))[1] < rankTwoPair(that.cards, hand_info(that.cards))[1]) return -1;
                     else return 0;
 
                 case 3:
                     index = 4;
-                    while (rankStraight(this.cards,hand_info(this.cards))[index].compareTo(rankStraight(that.cards,hand_info(that.cards))[index]) == 0) index--;
-                    return rankStraight(this.cards,hand_info(this.cards))[index].compareTo(rankStraight(that.cards,hand_info(that.cards))[index]);
+                    while (rankStraight(this.cards, hand_info(this.cards))[index].compareTo(rankStraight(that.cards, hand_info(that.cards))[index]) == 0) index--;
+                    return rankStraight(this.cards, hand_info(this.cards))[index].compareTo(rankStraight(that.cards, hand_info(that.cards))[index]);
 
                 case 4:
                     index = 4;
-                    while (rankFlush(this.cards,hand_info(this.cards))[index].compareTo(rankFlush(that.cards,hand_info(that.cards))[index]) == 0) index--;
-                    return rankFlush(this.cards,hand_info(this.cards))[index].compareTo(rankFlush(that.cards,hand_info(that.cards))[index]);
+                    while (rankFlush(this.cards, hand_info(this.cards))[index].compareTo(rankFlush(that.cards, hand_info(that.cards))[index]) == 0) index--;
+                    return rankFlush(this.cards, hand_info(this.cards))[index].compareTo(rankFlush(that.cards, hand_info(that.cards))[index]);
 
                 case 5:
-                    if (rankFullHouse(this.cards,hand_info(this.cards))[0] > rankFullHouse(that.cards,hand_info(that.cards))[0]) return 1;
-                    else if (rankFullHouse(this.cards,hand_info(this.cards))[0] < rankFullHouse(that.cards,hand_info(that.cards))[0]) return -1;
-                    else if (rankFullHouse(this.cards,hand_info(this.cards))[1] > rankFullHouse(that.cards,hand_info(that.cards))[1]) return 1;
-                    else if (rankFullHouse(this.cards,hand_info(this.cards))[1] < rankFullHouse(that.cards,hand_info(that.cards))[1]) return -1;
+                    if (rankFullHouse(this.cards, hand_info(this.cards))[0] > rankFullHouse(that.cards, hand_info(that.cards))[0]) return 1;
+                    else if (rankFullHouse(this.cards, hand_info(this.cards))[0] < rankFullHouse(that.cards, hand_info(that.cards))[0]) return -1;
+                    else if (rankFullHouse(this.cards, hand_info(this.cards))[1] > rankFullHouse(that.cards, hand_info(that.cards))[1]) return 1;
+                    else if (rankFullHouse(this.cards, hand_info(this.cards))[1] < rankFullHouse(that.cards, hand_info(that.cards))[1]) return -1;
                     else return 0;
 
                 case 6:
-                    if (rankFourAKind(this.cards,hand_info(this.cards)) > rankFourAKind(that.cards,hand_info(that.cards))) return 1;
-                    else if (rankFourAKind(this.cards,hand_info(this.cards)) < rankFourAKind(that.cards,hand_info(that.cards))) return -1;
+                    if (rankFourAKind(this.cards, hand_info(this.cards)) > rankFourAKind(that.cards, hand_info(that.cards))) return 1;
+                    else if (rankFourAKind(this.cards, hand_info(this.cards)) < rankFourAKind(that.cards, hand_info(that.cards))) return -1;
                     else return 0;
             }
         }
