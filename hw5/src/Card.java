@@ -20,21 +20,46 @@ public class Card implements Comparable<Card> {
     // DO NOT MODIFY THIS    
     public String getSuit(){
         return this.suit;
-    }   
-    
+    }
+
+    private static int face_convert(String face) {
+        if (face.equals("A")) return 14;
+        else if (face.equals("K")) return 13;
+        else if (face.equals("Q")) return 12;
+        else if (face.equals("J")) return 11;
+        else return Integer.parseInt(face);
+    }
+
+    private static int suit_convert(String suit) {
+        if (suit.equals("Spades")) return 3;
+        else if (suit.equals("Hearts")) return 2;
+        else if (suit.equals("Diamonds")) return 1;
+        else if (suit.equals("Clubs")) return 0;
+        else {
+            StdOut.println("Invalid suit name");
+            return -1;
+        }
+    }
+
     // TODO
     public int compareTo(Card that) {
-        // complete this function so the Card can be sorted
-        // (you must consider both face and suit)
-        return 0;
+        int this_card = face_convert(this.face) * 10 + suit_convert(this.suit);
+        int that_card = face_convert(that.face) * 10 + suit_convert(that.suit);
+
+        if (this_card > that_card) return 1;
+        else if (this_card == that_card) return 0;
+        else return -1;
     }  
 
     // TODO
     private static class SuitOrder implements Comparator<Card> {
         public int compare(Card c1, Card c2) {
-            // complete this function so the Card can be sorted according to the suit
-            return 0;
+            int c1_card = suit_convert(c1.suit);
+            int c2_card = suit_convert(c2.suit);
+
+            if (c1_card > c2_card) return 1;
+            else if (c1_card == c2_card) return 0;
+            else return -1;
         }
     }   
 }
-

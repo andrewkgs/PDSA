@@ -40,8 +40,7 @@ public class Game{
             Arrays.sort(playerArray);
            
             System.out.println(playerArray[playerCount-1].getName());              
-            
-            
+
         }
     }
 }
