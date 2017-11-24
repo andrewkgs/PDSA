@@ -1,14 +1,16 @@
 # HW6: A* Search
 
-## Examples of A* Search.
+## Examples of A* Search
 
 ![](https://github.com/andrewkgs/PDSA/blob/master/hw6/A_star.png)
 
-A* search algorithm is a well-known algorithm for pathfinding and graph traversal.Based on its main idea, there are three important values which are f, g, and h you must concern.The g value is the real distance you go step by step from the start point to the current point.The h value is an estimated distance from the current point to the goal point.And the f value is the sum of g and h, which is the main target you need to minimize to get the best solution. Video instruction: link 
+A* search algorithm is a well-known algorithm for pathfinding and graph traversal. Based on its main idea, there are three important values which are f, g, and h you must concern. The g value is the real distance you go step by step from the start point to the current point. The h value is an estimated distance from the current point to the goal point. And the f value is the sum of g and h, which is the main target you need to minimize to get the best solution.<br/>
+
+Video instruction: [link](https://www.youtube.com/watch?v=_CBhTubi-CU) 
 
 ## Assignment
 
-In this assignment, you need to implement a class "Search.java" to solve a shortest path problem using A* search algorithm.Please follow the pseudocode in the link and try to finish the rest of the class.You need to use the MinPQ in algs4.jar in your program.The h value of each point is given as an input, so you don't need to worry about this part. 
+In this assignment, you need to implement a class "Search.java" to solve a shortest path problem using A* search algorithm. Please follow the pseudocode in the link and try to finish the rest of the class.You need to use the MinPQ in algs4.jar in your program. The h value of each point is given as an input, so you don't need to worry about this part. 
 
 ```
 public class Search {
@@ -26,7 +28,7 @@ public class Search {
 * If there's two point with the same f value, make the point with larger g value have the priority in delMin. 
 
 
-The input file will provide you the row, column, start point, goal point, and a row-by-column table filled with numbers or "nn".The numbers are the h values of the points. The "nn" means the wall or some obstacles, which implies this point cannot be passed through. Every number or "nn" is split by a space. For the output, you need to print out two things. One is the total cost in this path, and the other is the the shortest path including every point from the start point to the goal point. 
+The input file will provide you the row, column, start point, goal point, and a row-by-column table filled with numbers or "nn". The numbers are the h values of the points. The "nn" means the wall or some obstacles, which implies this point cannot be passed through. Every number or "nn" is split by a space. For the output, you need to print out two things. One is the total cost in this path, and the other is the the shortest path including every point from the start point to the goal point. 
 
 ## Example input:
 ```
@@ -53,4 +55,4 @@ nn nn nn nn nn nn nn nn nn nn nn
 4,7
 ```
 
-**Example file**: [hw6.zip](https://github.com/andrewkgs/PDSA/blob/master/hw6/hw6.zip)
+**Example file** : [hw6.zip](https://github.com/andrewkgs/PDSA/blob/master/hw6/hw6.zip)
