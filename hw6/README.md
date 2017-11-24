@@ -14,11 +14,9 @@ In this assignment, you need to implement a class "Search.java" to solve a short
 
 ```
 public class Search {
-
     private final static int VH_length = 10; // The length of vertical and horizontal move is 10.
     private final static int Dia_length = 14; // The length of diagonal move is 14.
     //private MinPQ<>
-
 }
 ```
 
