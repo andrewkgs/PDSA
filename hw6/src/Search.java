@@ -7,8 +7,8 @@ public class Search {
     private final static int Dia_length = 14;
 
     public class Node implements Comparable<Node> {
-        public int x_co, y_co, f, g, h; // f = g + h
-        public int state = 0; // unreached:0, in openSet:1, in closedSet:2
+        public int row, col, f, g, h; // f = g + h
+        private int state = 0; // unreached:0, in openSet:1, in closedSet:2
         public Node previous;
 
         public int compareTo(Node that) {
@@ -21,22 +21,63 @@ public class Search {
                 if (this.h > that.h) return 1;
                 else if (this.h == that.h) return 0;
             }
-            else return -1;
+            return -1;
         }
     }
 
-    private MinPQ<Node> openSet;
-    private Stack<Node> closedSet;
+    public MinPQ<Node> openSet = new MinPQ<>();
+    public Stack<Node> closedSet = new Stack<>();
+    public Node[][] grid;
+    
 
-    private Node[][]
+    private void update(Node node, boolean flag) {
 
-    private void observe(Node node) {
-        // Observe order: Right, LowerRight, Down, LowerLeft, Left, UpperLeft, Up, UpperRight
+        int d;
+        if (flag) d = VH_length;
+        else d = Dia_length;
 
+        int new_g;
+        if (node.state != 2 && node.h != -1) {
+            new_g = node.g + d;
+            if (new_g < node.g) {
+                node.previous = node;
+                node.g = new_g;
+            }
 
+            if (node.state == 0) {
+                openSet.insert(node);
+                node.state = 1;
+            }
+        }
     }
 
+
+    private void observe(Node node) {
+
+        // Observe order: Right, LowerRight, Down, LowerLeft, Left, UpperLeft, Up, UpperRight
+
+        Node Right = grid[node.row][node.col + 1];
+        Node LowerRight = grid[node.row + 1][node.col + 1];
+        Node Down = grid[node.row + 1][node.col];
+        Node LowerLeft = grid[node.row + 1][node.col - 1];
+        Node Left = grid[node.row][node.col - 1];
+        Node UpperLeft = grid[node.row - 1][node.col - 1];
+        Node Up = grid[node.row - 1][node.col];
+        Node UpperRight = grid[node.row - 1][node.col + 1];
+
+        update(Right, true);
+        update(LowerRight, false);
+        update(Down, true);
+        update(LowerLeft, false);
+        update(Left, true);
+        update(UpperLeft, false);
+        update(Up, true);
+        update(UpperRight, false);
+    }
+
+
     public static void main(String args[]) throws Exception{
+
         if (args.length != 0) {
             try (BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
                 int total_row = Integer.parseInt(br.readLine().split(" ")[1]);
@@ -52,17 +93,21 @@ public class Search {
                 int goal_col = Integer.parseInt(goal[1]) - 1;
                 goal = null;
 
-                int[][] field = new int[total_row][total_col];
+                int[][] grid_h = new int[total_row][total_col];
 
                 for (int i=0; i<total_row; i++) {
                     String data[] = br.readLine().split(" ");
                     for (int j=0; j<total_col; j++) {
-                        if (data[j].equals("nn")) field[i][j] = -1;
-                        else field[i][j] = Integer.parseInt(data[j]);
+                        if (data[j].equals("nn")) grid_h[i][j] = -1;
+                        else grid_h[i][j] = Integer.parseInt(data[j]);
                     }
                 }
-                Search search = new Search();
 
+                for (int i=0; i<total_row; i++) {
+                    for (int j=0; j<total_col; j++) {
+                        Node node = new Node();
+                    }
+                }
             }
         }
     }
