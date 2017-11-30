@@ -10,7 +10,6 @@ public class Search {
     private Node[][] grid;
 
     private void update(Node current, Node another, boolean flag) {
-
         int d;
         if (flag) d = VH_length;
         else d = Dia_length;
@@ -23,7 +22,6 @@ public class Search {
                 another.g = new_g;
                 another.f = another.g + another.h;
             }
-
             if (another.state == 0) {
                 openSet.insert(another);
                 another.state = 1;
@@ -32,9 +30,7 @@ public class Search {
     }
 
     private void observe(Node node) {
-
         // Observe order: Right, LowerRight, Down, LowerLeft, Left, UpperLeft, Up, UpperRight
-
         Node Right = grid[node.row][node.col + 1];
         Node LowerRight = grid[node.row + 1][node.col + 1];
         Node Down = grid[node.row + 1][node.col];
@@ -55,7 +51,6 @@ public class Search {
     }
 
     private void AStarSearch(int total_row, int total_col, int start_row, int start_col, int goal_row, int goal_col, int[][] grid_h) {
-
         grid = new Node[total_row][total_col];
         openSet = new MinPQ<>();
         Stack<Node> closedSet = new Stack<>();
@@ -71,7 +66,6 @@ public class Search {
                 grid[i][j] = node;
             }
         }
-
         grid[start_row][start_col].g = 0;
         grid[start_row][start_col].f = grid[start_row][start_col].h;
         openSet.insert(grid[start_row][start_col]);
@@ -87,7 +81,6 @@ public class Search {
                     trace = trace.previous;
                     if (trace == null) break;
                 }
-
                 while (!closedSet.isEmpty()) {
                     Node path = closedSet.pop();
                     StdOut.print(path.row + 1);
@@ -101,7 +94,6 @@ public class Search {
     }
 
     public static void main(String args[]) throws Exception{
-
         if (args.length != 0) {
             try (BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
                 int total_row = Integer.parseInt(br.readLine().split(" ")[1]);
@@ -124,7 +116,6 @@ public class Search {
                         else grid_h[i][j] = Integer.parseInt(data[j]);
                     }
                 }
-
                 Search search = new Search();
                 search.AStarSearch(total_row, total_col, start_row, start_col, goal_row, goal_col, grid_h);
             }
