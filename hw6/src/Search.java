@@ -85,7 +85,6 @@ public class Search {
                 while (true) {
                     closedSet.push(trace);
                     trace = trace.previous;
-
                     if (trace == null) break;
                 }
 
