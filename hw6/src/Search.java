@@ -6,21 +6,6 @@ public class Search {
     private final static int VH_length = 10;
     private final static int Dia_length = 14;
 
-    public class Node implements Comparable<Node> {
-        private int row, col, f, g, h; // f = g + h
-        private int state = 0; // unreached:0, in openSet:1, in closedSet:2
-        private Node previous;
-
-        public int compareTo(Node that) {
-
-            if (this.f > that.f) return 1;
-            else if (this.f < that.f) return -1;
-            else if (this.h > that.h) return 1;
-            else if (this.h < that.h) return -1;
-            else return 0;
-        }
-    }
-
     private MinPQ<Node> openSet;
     private Node[][] grid;
 
@@ -145,5 +130,19 @@ public class Search {
                 search.AStarSearch(total_row, total_col, start_row, start_col, goal_row, goal_col, grid_h);
             }
         }
+    }
+}
+
+class Node implements Comparable<Node> {
+    public int row, col, f, g, h; // f = g + h
+    public int state = 0; // unreached:0, in openSet:1, in closedSet:2
+    public Node previous;
+
+    public int compareTo(Node that) {
+        if (this.f > that.f) return 1;
+        else if (this.f < that.f) return -1;
+        else if (this.h > that.h) return 1;
+        else if (this.h < that.h) return -1;
+        else return 0;
     }
 }
