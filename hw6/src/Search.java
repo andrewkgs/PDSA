@@ -13,22 +13,16 @@ public class Search {
 
         public int compareTo(Node that) {
 
-            this.f = this.g + this.h;
-            that.f = that.g + that.h;
-
             if (this.f > that.f) return 1;
-            else if (this.f == that.f) {
-                if (this.h > that.h) return 1;
-                else if (this.h == that.h) return 0;
-            }
-            return -1;
+            else if (this.f < that.f) return -1;
+            else if (this.h > that.h) return 1;
+            else if (this.h < that.h) return -1;
+            else return 0;
         }
     }
 
     private MinPQ<Node> openSet;
-    private Stack<Node> closedSet;
     private Node[][] grid;
-
 
     private void update(Node current, Node another, boolean flag) {
 
@@ -42,6 +36,7 @@ public class Search {
             if (new_g < another.g) {
                 another.previous = current;
                 another.g = new_g;
+                another.f = another.g + another.h;
             }
 
             if (another.state == 0) {
@@ -50,7 +45,6 @@ public class Search {
             }
         }
     }
-
 
     private void observe(Node node) {
 
@@ -78,12 +72,10 @@ public class Search {
     private void AStarSearch(int total_row, int total_col, int start_row, int start_col, int goal_row, int goal_col, int[][] grid_h) {
 
         grid = new Node[total_row][total_col];
-
         openSet = new MinPQ<>();
-        closedSet = new Stack<>();
+        Stack<Node> closedSet = new Stack<>();
 
         for (int i=0; i<total_row; i++) {
-            grid[i] = new Node[total_col];
             for (int j=0; j<total_col; j++) {
                 Node node = new Node();
                 node.row = i;
@@ -134,12 +126,10 @@ public class Search {
                 String start[] = br.readLine().split(" ")[1].split(",");
                 int start_row = Integer.parseInt(start[0]) - 1;
                 int start_col = Integer.parseInt(start[1]) - 1;
-                start = null;
 
                 String goal[] = br.readLine().split(" ")[1].split(",");
                 int goal_row = Integer.parseInt(goal[0]) - 1;
                 int goal_col = Integer.parseInt(goal[1]) - 1;
-                goal = null;
 
                 int[][] grid_h = new int[total_row][total_col];
 
