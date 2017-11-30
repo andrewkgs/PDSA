@@ -7,9 +7,9 @@ public class Search {
     private final static int Dia_length = 14;
 
     public class Node implements Comparable<Node> {
-        public int row, col, f, g, h; // f = g + h
+        private int row, col, f, g, h; // f = g + h
         private int state = 0; // unreached:0, in openSet:1, in closedSet:2
-        public Node previous;
+        private Node previous;
 
         public int compareTo(Node that) {
 
@@ -25,28 +25,28 @@ public class Search {
         }
     }
 
-    public MinPQ<Node> openSet;
-    public Stack<Node> closedSet;
-    public Node[][] grid;
+    private MinPQ<Node> openSet;
+    private Stack<Node> closedSet;
+    private Node[][] grid;
 
 
-    private void update(Node node, boolean flag) {
+    private void update(Node current, Node another, boolean flag) {
 
         int d;
         if (flag) d = VH_length;
         else d = Dia_length;
 
         int new_g;
-        if (node.state != 2 && node.h != -1) {
-            new_g = node.g + d;
-            if (new_g < node.g) {
-                node.previous = node;
-                node.g = new_g;
+        if (another.state != 2 && another.h != -1) {
+            new_g = current.g + d;
+            if (new_g < another.g) {
+                another.previous = current;
+                another.g = new_g;
             }
 
-            if (node.state == 0) {
-                openSet.insert(node);
-                node.state = 1;
+            if (another.state == 0) {
+                openSet.insert(another);
+                another.state = 1;
             }
         }
     }
@@ -65,43 +65,45 @@ public class Search {
         Node Up = grid[node.row - 1][node.col];
         Node UpperRight = grid[node.row - 1][node.col + 1];
 
-        update(Right, true);
-        update(LowerRight, false);
-        update(Down, true);
-        update(LowerLeft, false);
-        update(Left, true);
-        update(UpperLeft, false);
-        update(Up, true);
-        update(UpperRight, false);
+        update(node, Right, true);
+        update(node, LowerRight, false);
+        update(node, Down, true);
+        update(node, LowerLeft, false);
+        update(node, Left, true);
+        update(node, UpperLeft, false);
+        update(node, Up, true);
+        update(node, UpperRight, false);
     }
 
-    public void AStarSearch(int total_row, int total_col, int start_row, int start_col, int goal_row, int goal_col, int[][] grid_h) {
+    private void AStarSearch(int total_row, int total_col, int start_row, int start_col, int goal_row, int goal_col, int[][] grid_h) {
+
+        grid = new Node[total_row][total_col];
 
         openSet = new MinPQ<>();
         closedSet = new Stack<>();
-        grid = new Node[total_row][total_col];
 
         for (int i=0; i<total_row; i++) {
+            grid[i] = new Node[total_col];
             for (int j=0; j<total_col; j++) {
                 Node node = new Node();
                 node.row = i;
                 node.col = j;
                 node.state = 0;
-                node.g = 10000;
+                node.g = Integer.MAX_VALUE;
                 node.h = grid_h[i][j];
                 grid[i][j] = node;
             }
         }
 
         grid[start_row][start_col].g = 0;
-
+        grid[start_row][start_col].f = grid[start_row][start_col].h;
         openSet.insert(grid[start_row][start_col]);
 
         while (!openSet.isEmpty()) {
             Node node = openSet.delMin();
 
             if (node.equals(grid[goal_row][goal_col])) {
-                StdOut.println(node.g);
+                StdOut.println(node.f);
                 Node trace = node;
                 while (true) {
                     closedSet.push(trace);
@@ -112,7 +114,9 @@ public class Search {
 
                 while (!closedSet.isEmpty()) {
                     Node path = closedSet.pop();
-                    StdOut.println((path.row + 1) + "," + (path.col + 1));
+                    StdOut.print(path.row + 1);
+                    StdOut.print(",");
+                    StdOut.println(path.col + 1);
                 }
             }
             node.state = 2; // Add the node to closesSet
