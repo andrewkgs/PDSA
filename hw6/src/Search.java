@@ -25,10 +25,10 @@ public class Search {
         }
     }
 
-    public MinPQ<Node> openSet = new MinPQ<>();
-    public Stack<Node> closedSet = new Stack<>();
+    public MinPQ<Node> openSet;
+    public Stack<Node> closedSet;
     public Node[][] grid;
-    
+
 
     private void update(Node node, boolean flag) {
 
@@ -75,6 +75,50 @@ public class Search {
         update(UpperRight, false);
     }
 
+    public void AStarSearch(int total_row, int total_col, int start_row, int start_col, int goal_row, int goal_col, int[][] grid_h) {
+
+        openSet = new MinPQ<>();
+        closedSet = new Stack<>();
+        grid = new Node[total_row][total_col];
+
+        for (int i=0; i<total_row; i++) {
+            for (int j=0; j<total_col; j++) {
+                Node node = new Node();
+                node.row = i;
+                node.col = j;
+                node.state = 0;
+                node.g = 10000;
+                node.h = grid_h[i][j];
+                grid[i][j] = node;
+            }
+        }
+
+        grid[start_row][start_col].g = 0;
+
+        openSet.insert(grid[start_row][start_col]);
+
+        while (!openSet.isEmpty()) {
+            Node node = openSet.delMin();
+
+            if (node.equals(grid[goal_row][goal_col])) {
+                StdOut.println(node.g);
+                Node trace = node;
+                while (true) {
+                    closedSet.push(trace);
+                    trace = trace.previous;
+
+                    if (trace == null) break;
+                }
+
+                while (!closedSet.isEmpty()) {
+                    Node path = closedSet.pop();
+                    StdOut.println((path.row + 1) + "," + (path.col + 1));
+                }
+            }
+            node.state = 2; // Add the node to closesSet
+            observe(node);
+        }
+    }
 
     public static void main(String args[]) throws Exception{
 
@@ -103,11 +147,8 @@ public class Search {
                     }
                 }
 
-                for (int i=0; i<total_row; i++) {
-                    for (int j=0; j<total_col; j++) {
-                        Node node = new Node();
-                    }
-                }
+                Search search = new Search();
+                search.AStarSearch(total_row, total_col, start_row, start_col, goal_row, goal_col, grid_h);
             }
         }
     }
