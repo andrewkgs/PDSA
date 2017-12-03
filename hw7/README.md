@@ -41,7 +41,7 @@ The draw would be hold several times on that day. <br/>
 The procedures are all on Net, as following:
 1.  Total N people can join. N > 0
 2.  Enter your name and a number X. -500N ≤ X ≤ 500N. X must not been chosen by another person yet.
-3.  After N people assigned. A winning number W will be chosen among people's X. The person with that number win the first prize. People with +-M nearest X win second prize.
+3.  After N people assigned. A winning number W will be chosen among people's X. The person with that number win the first prize. People with ±M nearest X win second prize.
  
 In this assignment, you need to write a program "Prize.java", which reads N, M, W, names and their corresponding X. Print winners of the game. <br/>
 
