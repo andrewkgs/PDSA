@@ -26,11 +26,11 @@ For example, in the NewBST below (key: int, value: char).
 
 ![](https://github.com/andrewkgs/PDSA/blob/master/hw7/BST.jpg)
 
-**Example file** : [hw7-1.zip](https://github.com/andrewkgs/PDSA/blob/master/hw7/hw7-2.zip)
-
 predecessor(7, 2)=h; predecessor(4, 2)=e; predecessor(84, 0)=e; predecessor(6, 0)=null
  
 We won't execute main() in this program.
+
+**Example file** : [hw7-1.zip](https://github.com/andrewkgs/PDSA/blob/master/hw7/hw7-2.zip)
 
 ## Assignment 7-2: Prize
 
