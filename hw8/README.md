@@ -8,18 +8,17 @@ Find all points in a query axis-aligned rectangle.
 
 Please design a class 'RangeSearch.java' which contains the following two public functions:
 
-* Notice that the judge system will not execute the main function in RangeSearch.java
+* Notice that the judge system will not execute the main function in RangeSearch.java.
+* Please use the Point2D from algs4.jar.
 
-* Please use the Point2D from algs4.jar
-
-1. Construct a 2d-tree when given a Point2D array
+1. Construct a 2d-tree when given a Point2D array.
 ```
 public void init(Point2D[] points){
     return;
 }
 ```
 
-2. Report the points in a given rectangle
+2. Report the points in a given rectangle.
 ```
 public Point2D[] query(Point2D ll, Point2D ur){ 
     //"ll" is the lower left corner of the rectangle, "ur" is the upper right corner of the rectangle.
