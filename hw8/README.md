@@ -57,14 +57,15 @@ If the points passed into the init function are as follows:
 
 And the judge system query a rectangle with lower left corner(0.2 , 0.3) and upper right corner(0.7 , 0.8), the function should return points as below:
 ```
-0.425383 0.312395
-0.340678 0.316479
-0.572038 0.410803
-0.529952 0.463695
-0.212635 0.484253
-0.342608 0.721821
-0.503405 0.796483
+0.4253832308 0.3123947194
+0.3406783533 0.3164794008
+0.5720377234 0.4108029499
+0.5299519862 0.4636946673
+0.2126349801 0.4842532332
+0.3426077152 0.7218207763
+0.5034046695 0.7964833541
 ```
+
 ![](https://github.com/andrewkgs/PDSA/blob/master/hw8/example.png)
 
 **Example file**: [hw8.zip](https://github.com/andrewkgs/PDSA/blob/master/hw8/hw8.zip)
