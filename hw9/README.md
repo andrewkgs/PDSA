@@ -51,7 +51,6 @@ public class Block {
         // Return the total cost of the path you build recently.
         return cost;
     }
-
 }
 ```
 
