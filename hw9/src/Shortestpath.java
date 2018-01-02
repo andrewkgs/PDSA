@@ -18,7 +18,7 @@ public class Shortestpath {
 
             in.readLine();
 
-            int block[] = new int[][];
+            int grid[][] = new int[total_row][total_col];
             while ((data=in.readLine()) != null) {
 
             }
