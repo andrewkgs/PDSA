@@ -37,5 +37,5 @@ You are requested to design a Java class named Mapping. So, please submitted a f
 **Example file**: [hw0.zip](https://github.com/andrewkgs/PDSA/blob/master/hw0/hw0.zip)
 
 ## Related links
-> https://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html
+> https://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html<br/>
 > https://docs.oracle.com/javase/7/docs/api/java/lang/String.html
