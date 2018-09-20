@@ -17,7 +17,7 @@ Output of the function 'ans':
 2
 ```
 
-## Note:
+## Note
 
 1. The judging system will construct an object by initializing an instance of Calculator
 Calculator cct = new Calculator();
@@ -27,6 +27,6 @@ Calculator cct = new Calculator();
 5. You only need to handle with the four operators (+, -, *, /) and the round brackets ( ). No square brackets[ ], curly brackets{ }, or other operators will be used.
 6. Make sure you calculate in order of operations.( brackets -> multiplication and division -> addition and subtraction )
 
-## File to be submitted to the judge system:
+## File to be submitted to the judge system
 
 You are requested to design a Java class named Calculator. So, please submit a file named: Calculator.java
