@@ -40,7 +40,7 @@ public class Onion {
     }
 }
 ```
-## Example input:
+## Example input
 ```
 20
 0.35 0.17
@@ -65,7 +65,7 @@ public class Onion {
 0.28 0.11
 ```
 
-## Example output: 
+## Example output
 ```
 3
 ```
