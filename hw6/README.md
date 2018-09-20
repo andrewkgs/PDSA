@@ -28,7 +28,7 @@ public class Search {
 
 The input file will provide you the row, column, start point, goal point, and a row-by-column table filled with numbers or "nn". The numbers are the h values of the points. The "nn" means the wall or some obstacles, which implies this point cannot be passed through. Every number or "nn" is split by a space. For the output, you need to print out two things. One is the total cost in this path, and the other is the the shortest path including every point from the start point to the goal point. 
 
-## Example input:
+## Example input
 ```
 row 7
 column 11
@@ -43,7 +43,7 @@ nn 64 54 44 34 24 20 24 28 38 nn
 nn nn nn nn nn nn nn nn nn nn nn
 ```
 
-## Example output:
+## Example output
 ```
 56
 4,3
@@ -53,4 +53,4 @@ nn nn nn nn nn nn nn nn nn nn nn
 4,7
 ```
 
-**Example file** : [hw6.zip](https://github.com/andrewkgs/PDSA/blob/master/hw6/hw6.zip)
+**Example file**: [hw6.zip](https://github.com/andrewkgs/PDSA/blob/master/hw6/hw6.zip)
