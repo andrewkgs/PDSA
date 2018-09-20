@@ -21,7 +21,7 @@ public class Deque implements Iterable {
 }
 ```
 
-## Corner cases: <br/>
+## Corner cases
 * Throw a ***java.lang.NullPointerException*** if the client attempts to add a null item.
 * Throw a ***java.util.NoSuchElementException*** if the client attempts to remove an item from an empty deque.
 * Throw a ***java.lang.UnsupportedOperationException*** if the client calls the remove() method in the iterator.
